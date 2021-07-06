@@ -1,0 +1,159 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api modelo",
+        "description": "Api modelo teste Swagger",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact" : {
+            "email": "email@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url":"http://localhost:3000/",
+            "description":"API de teste"
+        }
+    ],
+    "paths" :{
+        "/user": {
+            "get": {
+                "sumary": "Retorna lista de usuarios",
+                "description": "Rota respontavel por listar usuários",
+                "tags": ["Users"],
+
+                "responses" : {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema" : {
+                                    "type" :"object",
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        } 
+                    },
+                    "400": {
+                        "description": "deu ruim"
+                    }
+                }
+            }
+            
+        },
+        "/user/register": {
+            "post": {
+                "sumary": "Registrar usuarios",
+                "description": "Rota respontavel registro de usuarios",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema" : {
+                                "$ref": "#/components/schemas/Users"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "nome": "teste",
+                                        "email":"teste@teste.com.br",
+                                        "usuario":"teste",
+                                        "password": "password123",
+                                        "status": "1"
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                 },
+                "responses" : {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "deu ruim"
+                    }
+                }
+            }
+            
+        },
+        "/user/login": {
+            "post": {
+                "sumary": "Login usuarios",
+                "description": "Rota respontavel login de usuarios",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema" : {
+                                "$ref": "#/components/schemas/Users"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "usuario":"teste",
+                                        "password": "password123"
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                 },
+                "responses" : {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "deu ruim"
+                    }
+                }
+            }
+            
+        }
+    },
+    "components":{
+        "schemas": {
+            "Users":{
+                "type": "object",
+                "properties": {
+                    "nome":{
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string" 
+                    },
+                    "usuario": {
+                        "type": "string" 
+                    },
+                    "password": {
+                        "type": "string" 
+                    },
+                    "status": {
+                        "type": "DOUBLE" 
+                    }
+                }
+            },
+            "Users2":{
+                "type": "object",
+                "properties": {
+                    "nome":{
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string" 
+                    },
+                    "usuario": {
+                        "type": "string" 
+                    },
+                    "password": {
+                        "type": "string" 
+                    },
+                    "status": {
+                        "type": "DOUBLE" 
+                    }
+                }
+            }
+        }
+    }
+
+}
